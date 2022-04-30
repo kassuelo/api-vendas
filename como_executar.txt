@@ -1,0 +1,9 @@
+                 nome do bd    senha do bd     porta do SO:porta no docker (sempre 5432)    -d pra nao bloquear o terminal
+1. docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+2. cria um bd com o nome apivendas no DBeaver
+3. clica no banco de dados no DBeaver e vai em create > extencions > uuid_ossp pra aceitar usar UUID
+4. usa o comando "yarn typeorm migration:create -n CreateProduct" pra criar uma migração
+5. programa os campos da tabela no arquivo de migração criado (AULA 23)
+6. usa o comando "yarn typeorm migration:run" pra criar as tabelas no BD a partir das migrações existentes
+7. "yarn dev" no terminal do vscode
+
