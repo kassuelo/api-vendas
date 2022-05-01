@@ -27,8 +27,7 @@ class CreateSessionService {
     if (!authenticatedUser) {
       throw new AppError('Incorrect password.', 401);
     }
-    console.log('env:' + process.env.SECRET);
-    const token = jwt.sign({ id: user.id }, process.env.SECRET + '', {
+    const token = jwt.sign({}, process.env.SECRET + '', {
       subject: user.id,
       expiresIn: '1d',
       algorithm: 'HS256',
