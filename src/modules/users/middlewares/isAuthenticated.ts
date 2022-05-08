@@ -24,10 +24,8 @@ export default function isAuthenticated(
     const { sub } = decodedToken as ITokenPayload;
     request.user = { id: sub };
 
-    console.log(decodedToken);
     return next();
   } catch (e) {
-    console.log('Error:' + e);
     throw new AppError('Invalid token.');
   }
 }
