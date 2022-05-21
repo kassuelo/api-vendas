@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
-import bcrypt from 'bcrypt';
+import { compare } from 'bcryptjs';
 import User from '../typeorm/entities/User';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
@@ -23,7 +23,7 @@ class CreateSessionService {
     if (!user) {
       throw new AppError('Incorrect e-mail.', 401);
     }
-    const authenticatedUser = await bcrypt.compare(password, user.password);
+    const authenticatedUser = await compare(password, user.password);
     if (!authenticatedUser) {
       throw new AppError('Incorrect password.', 401);
     }
