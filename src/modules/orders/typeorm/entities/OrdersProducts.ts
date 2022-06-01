@@ -1,11 +1,9 @@
-import Customer from '@modules/customers/typeorm/entities/Customer';
-import Product from '@modules/products/typeorm/entities/Products';
+import Product from '@modules/products/typeorm/entities/Product';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
-  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -24,6 +22,12 @@ class OrdersProducts {
   @ManyToOne(() => Product, product => product.order_products)
   @JoinColumn({ name: 'product_id' })
   product: Product;
+
+  @Column()
+  order_id: string;
+
+  @Column()
+  product_id: string;
 
   @Column('decimal')
   price: number;
