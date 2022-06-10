@@ -7,8 +7,10 @@ import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
+import { pagination } from 'typeorm-pagination';
 
 const app = express();
+app.use(pagination);
 app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.directory));

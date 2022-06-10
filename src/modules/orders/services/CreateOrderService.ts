@@ -42,15 +42,15 @@ class CreateOrderService {
       );
     }
 
-    const quantityAvailable = products.filter(
+    const quantityUnavailable = products.filter(
       product =>
         productsExists.filter(p => p.id === product.id)[0].quantity <
         product.quantity,
     );
 
-    if (quantityAvailable.length) {
+    if (quantityUnavailable.length) {
       throw new AppError(
-        `The quantity ${checkInexistentProducts[0].quantity} is not available for ${quantityAvailable[0].id}`,
+        `The quantity ${quantityUnavailable[0].quantity} is not available for ${quantityUnavailable[0].id}`,
       );
     }
 
@@ -59,6 +59,7 @@ class CreateOrderService {
       quantity: product.quantity,
       price: productsExists.filter(p => p.id === product.id)[0].price,
     }));
+
     const order = await ordersRepository.createOrder({
       customer: customerExists,
       products: serializedProducts,
@@ -66,11 +67,11 @@ class CreateOrderService {
 
     const { order_products } = order;
 
-    const updatedProductQuantity = order_products.map(product => ({
-      id: product.product_id,
+    const updatedProductQuantity = order_products.map(order_product => ({
+      id: order_product.product_id,
       quantity:
-        productsExists.filter(p => p.id === product.id)[0].quantity -
-        product.quantity,
+        productsExists.filter(p => p.id === order_product.product_id)[0]
+          .quantity - order_product.quantity,
     }));
 
     await productsRepository.save(updatedProductQuantity);
