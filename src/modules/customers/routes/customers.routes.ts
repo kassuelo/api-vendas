@@ -1,4 +1,4 @@
-import isAuthenticated from '@modules/users/middlewares/isAuthenticated';
+import isAuthenticated from '@shared/middlewares/isAuthenticated';
 import { celebrate, Segments } from 'celebrate';
 import { Router } from 'express';
 import Joi from 'joi';

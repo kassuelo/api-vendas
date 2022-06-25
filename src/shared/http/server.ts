@@ -9,11 +9,17 @@ import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
 import { pagination } from 'typeorm-pagination';
+import rateLimiter from '@shared/middlewares/rateLimiter';
 
 const app = express();
-app.use(pagination);
+
 app.use(cors());
 app.use(express.json());
+
+app.use(rateLimiter);
+
+app.use(pagination);
+
 app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
 app.use(errors());
