@@ -20,6 +20,7 @@ interface IUploadConfig {
 }
 
 export default {
+  driver: process.env.STORAGE_DRIVER,
   directory: uploadFolder,
   tmpFolder,
   multer: {

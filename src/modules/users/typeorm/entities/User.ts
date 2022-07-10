@@ -37,7 +37,9 @@ class User {
     if (!this.avatar) {
       return null;
     }
-    return `${process.env.APP_API_URL}/files/${this.avatar}`;
+    return process.env.STORAGE_DRIVER == 'disk'
+      ? `${process.env.APP_API_URL}/files/${this.avatar}`
+      : `${process.env.BUCKET_S3_URL}/${this.avatar}`;
   }
 }
 
