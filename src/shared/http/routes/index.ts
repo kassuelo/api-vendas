@@ -8,6 +8,7 @@ import customersRouter from '@modules/customers/routes/customers.routes';
 import ordersRouter from '@modules/orders/routes/orders.routes';
 
 const routes = Router();
+
 routes.use('/products', productsRouter);
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
