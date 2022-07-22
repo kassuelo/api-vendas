@@ -6,7 +6,6 @@ temp/
 .env
 *.txt
 coverage
-ormconfig.json
 dist
 
 uploads/*
