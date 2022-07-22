@@ -44,6 +44,6 @@ const port = Number.parseInt(
   '' + process.env.APP_API_URL?.substring(process.env.APP_API_URL.length - 4),
 );
 app.get('/', (req, res) => res.send('Bem vindo!'));
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Server started on port ${port}!`);
 });
