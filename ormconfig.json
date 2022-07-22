@@ -6,5 +6,5 @@
   "cli": {
     "migrationsDir": "./dist/shared/typeorm/migrations"
   },
-  "ssl":true
+  "ssl":false
 }
