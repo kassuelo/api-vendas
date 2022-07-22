@@ -1,10 +1,10 @@
 {
   "type": "postgres",
   "url": "postgres://vdjhwbusysizdj:349d4d4b71c01998edc49fbb295b78add59927aa21bb0eec3051456118c7b725@ec2-54-165-90-230.compute-1.amazonaws.com:5432/dbhde52i74beg",
-  "port": 5432,
   "entities": ["./dist/modules/**/typeorm/entities/*.js"],
   "migrations": ["./dist/shared/typeorm/migrations/*.js"],
   "cli": {
     "migrationsDir": "./dist/shared/typeorm/migrations"
-  }
+  },
+  "ssl":true
 }
