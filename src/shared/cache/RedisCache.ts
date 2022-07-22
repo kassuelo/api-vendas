@@ -1,4 +1,4 @@
-import Redis, { Redis as RedisClient } from 'ioredis';
+/*import Redis, { Redis as RedisClient } from 'ioredis';
 import cacheConfig from '@config/cache';
 
 class RedisCache {
@@ -33,3 +33,4 @@ class RedisCache {
 }
 
 export default new RedisCache();
+*/
